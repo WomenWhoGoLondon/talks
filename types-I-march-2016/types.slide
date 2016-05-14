@@ -1,0 +1,139 @@
+Go types - part I
+
+Jimena Cabrera Notari
+@_phenomenes_
+
+* What is a type?
+
+A type determines the kind of data of a variable
+
+*Predeclared*
+
+- boolean
+- numeric
+- string
+
+*Composite*
+
+- structs
+- arrays
+- slices
+- maps 
+
+* Variables and type declaration
+
+  var i int = 1          // integer
+  var s string = "hello" // string
+
+  // Short variable declaration
+  i := 2
+  s := "world"
+   
+  var b bool // boolean
+  b = true
+
+* Type checking
+
+Go is _statically_ _typed_, the type of a variable is interpreted at compilation time
+
+  var num int = 1           // integer
+  var word string = "hello" // string
+
+  // compilation error: cannot use word (type string) as type int in assignment
+  num = word
+
+* Dynamic typing
+
+Python
+
+  num = 1         # integer
+  word = "hello"  # string
+  num = word      # num is now a string
+
+Javascript
+
+  var num = 2;          // integer
+  var word = "hello";   // string
+  num = word;           // num is now an string
+
+ 
+* Go built-in types
+
+* Boolean type
+
+The boolean type represents truth values, denoted by the pre-decleared contants true or false
+
+  var isTrue bool
+  isTrue = true
+  if isTrue {
+          ...
+  }
+
+* Numeric types
+
+  int         either 32 or 64 bits
+  uint        either 32 or 64 bits
+
+  int8        the set of all signed  8-bit integers (-128 to 127)
+  int16       the set of all signed 16-bit integers (-32768 to 32767)
+  int32       the set of all signed 32-bit integers (-2147483648 to 2147483647)
+  int64       the set of all signed 64-bit integers (-9223372036854775808 to 9223372036854775807)
+
+  uint8       the set of all unsigned  8-bit integers (0 to 255)
+  uint16      the set of all unsigned 16-bit integers (0 to 65535)
+  uint32      the set of all unsigned 32-bit integers (0 to 4294967295)
+  uint64      the set of all unsigned 64-bit integers (0 to 18446744073709551615)
+
+  float32     the set of all 32-bit floating-point numbers
+  float64     the set of all 64-bit floating-point numbers
+
+  byte        alias for uint8
+  rune        alias for int32
+
+  complex64   the set of all complex numbers with float32 real and imaginary parts
+  complex128  the set of all complex numbers with float64 real and imaginary parts
+
+* Type internals
+
+Type in Go provide two pieces of information that the compiler needs to interpret the value: the amount of memory in _bytes_ and the _representation_ of those bytes.
+
+.image img/bytes.png
+
+* Numeric types
+
+Integers and floats operations
+
+.play numeric-int-float.go
+
+* Numeric types
+
+Type checking in action
+
+.play numeric-int8.go
+
+* Strings
+
+Strings in Go are a sequence of bytes, usually one for each character
+
+.play strings-english.go
+
+* Strings
+
+But in some languages ...
+
+.play strings-japanese.go
+
+* Strings
+
+This is also valid, regardless of the encoding
+
+.play strings-en-jp.go
+
+* To summarize
+
+- A boolean type, can only hold thruth values: true or false
+- Numeric types denote the ammount of memory in bits and the representarion of those bits: int8, uint16, ...
+- `int` gets mapped to the architecture where the code gets compiled; usually 32 bits or 64 bits
+- strings are a sequense of bytes, regardless of the encoding
+
+* Questions?
